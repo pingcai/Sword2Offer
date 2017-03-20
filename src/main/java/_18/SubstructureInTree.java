@@ -1,7 +1,9 @@
+package _18;
+
 /**
  * Created by pingcai on 17-3-9.
  */
-public class _18_SubstructureInTree {
+public class SubstructureInTree {
     public static void main(String[] args) {
 
         /**
@@ -10,14 +12,14 @@ public class _18_SubstructureInTree {
          *
          */
 
-        Node root = new Node(8);
+        TreeNode root = new TreeNode(8);
 
-        Node left8 = new Node(8);
-        Node right7 = new Node(7);
-        Node left9 = new Node(9);
-        Node left2 = new Node(2);
-        Node end4 = new Node(4);
-        Node end7 = new Node(7);
+        TreeNode left8 = new TreeNode(8);
+        TreeNode right7 = new TreeNode(7);
+        TreeNode left9 = new TreeNode(9);
+        TreeNode left2 = new TreeNode(2);
+        TreeNode end4 = new TreeNode(4);
+        TreeNode end7 = new TreeNode(7);
 
         root.left = left8;
         root.right = right7;
@@ -28,15 +30,15 @@ public class _18_SubstructureInTree {
         left2.left = end4;
         left2.right = end7;
 
-        Node target = new Node(8);
-        target.left = new Node(9);
-        target.right = new Node(2);
+        TreeNode target = new TreeNode(8);
+        target.left = new TreeNode(9);
+        target.right = new TreeNode(2);
 
-        System.out.println(isSubTree(root, target));
+        System.out.println(new SubstructureInTree().HasSubtree(root, target));
 
     }
 
-    public static boolean isSubTree(Node parent, Node target) {
+    public boolean HasSubtree(TreeNode parent, TreeNode target) {
 
         boolean flag = false;
 
@@ -44,7 +46,7 @@ public class _18_SubstructureInTree {
             return flag;
         }
 
-        if (target.value == parent.value) {
+        if (target.val == parent.val) {
             flag = doesJudge(parent, target);
         }
         if (!flag) {
@@ -56,7 +58,7 @@ public class _18_SubstructureInTree {
         return flag;
     }
 
-    public static boolean doesJudge(Node parent, Node target) {
+    public boolean doesJudge(TreeNode parent, TreeNode target) {
 
         if (target == null) {
             return true;
@@ -65,26 +67,24 @@ public class _18_SubstructureInTree {
             return false;
         }
 
-        if(parent.value != target.value){
+        if(parent.val != target.val){
             return false;
         }
 
         return doesJudge(parent.left, target.left) && doesJudge(parent.right, target.right);
     }
 
-    static class Node {
 
-        int value;
-        Node left;
-        Node right;
-
-        public Node() {
-        }
-
-        public Node(int value) {
-            this.value = value;
-        }
-    }
 }
 
+class TreeNode {
 
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    public TreeNode(int val) {
+        this.val = val;
+
+    }
+}

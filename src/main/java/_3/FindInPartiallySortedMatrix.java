@@ -1,19 +1,12 @@
+package _3;
+
 /**
  * Created by pingcai on 2017/2/19.
  */
-public class _03_FindInPartiallySortedMatrix {
+public class FindInPartiallySortedMatrix {
     public static void main(String[] args) {
-        int[][] array = {
-                {1, 2, 8, 9},
-                {2, 4, 9, 12},
-                {6, 7, 12, 13},
-                {8, 9, 14, 17},
-        };
-        System.out.println(downLeftFind(array, 7));
-        System.out.println(downLeftFind(array, 1));
-        System.out.println(downLeftFind(array, 8));
-        System.out.println(downLeftFind(array, 12));
-        System.out.println(downLeftFind(array, 19));
+        int[][] a = {{1,2,8,9},{2,4,9,12},{4,7,10,13},{6,8,11,15}};
+        System.out.println(new FindInPartiallySortedMatrix().Find(7, a));
     }
 
 
@@ -31,17 +24,16 @@ public class _03_FindInPartiallySortedMatrix {
      * @param array
      * @param target
      */
-    private static boolean upRightFind(int[][] array, int target) {
+    public boolean Find(int target, int[][] array) {
 
         boolean flag = false;
         int len = array.length;
         int row = 0;
         int cols = len - 1;
 
-        if (null == array || len == 0) {
+        if (empty(array)) {
             return false;
         }
-
         while (row < len && cols >= 0) {
 
             int temp = array[row][cols];
@@ -58,8 +50,21 @@ public class _03_FindInPartiallySortedMatrix {
         return flag;
     }
 
+    public boolean empty(int[][] array) {
+        if (null == array || array.length == 0 || array[0].length == 0) {
+            return true;
+        }
+        return false;
+    }
 
-    private static boolean downLeftFind(int[][] array, int target) {
+    /**
+     * downLeftFind 左下角往上
+     *
+     * @param array
+     * @param target
+     * @return
+     */
+    public boolean downLeftFind(int target, int[][] array) {
 
         boolean flag = false;
         int len = array.length;
