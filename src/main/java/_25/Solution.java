@@ -12,7 +12,7 @@ import java.util.Stack;
 public class Solution {
 
     public static void main(String[] args){
-
+        //这是模拟的数据
         TreeNode root = new TreeNode(10);
         TreeNode r1 = new TreeNode(5);
         TreeNode r2 = new TreeNode(12);
@@ -22,6 +22,7 @@ public class Solution {
         root.right = r2;
         r1.left = r3;
         r1.right = r4;
+
         System.out.println(new Solution().FindPath(root,22));
     }
 
