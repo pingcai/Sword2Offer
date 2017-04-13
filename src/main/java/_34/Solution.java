@@ -57,28 +57,28 @@ public class Solution {
         if (index <= 0) {
             return 0;
         }
-        int n = 1;
+        int res = 1;
         int d = 1;
-        while (n < index) {
+        while (res < index) {
             d ++;
             if (isUgly(d)) {
-                n++;
+                res++;
             }
         }
         return d;
     }
 
-    public boolean isUgly(int n) {
-        while (n % 2 == 0) {
-            n /= 2;
+    public boolean isUgly(int res) {
+        while (res % 2 == 0) {
+            res /= 2;
         }
-        while (n % 3 == 0) {
-            n /= 3;
+        while (res % 3 == 0) {
+            res /= 3;
         }
-        while (n % 5 == 0) {
-            n /= 5;
+        while (res % 5 == 0) {
+            res /= 5;
         }
-        return n == 1 ? true : false;
+        return res == 1 ? true : false;
     }
 */
 
